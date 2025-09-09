@@ -1,0 +1,17 @@
+{
+  "name": "viksorasports-rss-proxy",
+  "version": "1.0.0",
+  "description": "RSS Proxy Server for real-time sports updates",
+  "main": "rssProxy.js",
+  "scripts": {
+    "start": "node rssProxy.js",
+    "dev": "node rssProxy.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "keywords": ["rss", "proxy", "sports", "news", "real-time"],
+  "author": "VIKSORASPORTS Team",
+  "license": "MIT"
+}

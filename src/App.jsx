@@ -23,6 +23,7 @@ import AdminLogin from './pages/AdminLogin';
 import AuthDebug from './components/debug/AuthDebug';
 import AdminDebug from './components/debug/AdminDebug';
 import LogoTest from './components/debug/LogoTest'; // Add this import
+import ScrollToTop from './components/common/ScrollToTop';
 
 // Lazy load components for code splitting
 const Home = lazy(() => import('./pages/Home'));
@@ -98,6 +99,7 @@ function App() {
             v7_startTransition: true,
             v7_relativeSplatPath: true
           }}>
+            <ScrollToTop />
             <CssBaseline />
             <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100%', minWidth: '100vw' }}>
               <EnhancedNavbarWithAdmin />

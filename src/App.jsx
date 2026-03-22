@@ -13,6 +13,7 @@ import Footer from './components/common/Footer';
 import FloatingChatButton from './components/chatbot/FloatingChatButton';
 import { usePerformanceTracking } from './utils/performanceMonitoring';
 import { registerNetworkStatusChangeHandler } from './utils/serviceWorkerRegistration';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import './App.css'; // Import global styles and animations
 // import './styles/largeScreenFix.css'; // Import aggressive large screen fixes
 // import { autoDebugLargeScreen, forceLargeScreenVisibility } from './utils/debugLargeScreen';
@@ -182,6 +183,7 @@ function App() {
                 },
               }}
             />
+            <SpeedInsights />
           </BrowserRouter>
         </ThemeProvider>
       </AuthProvider>

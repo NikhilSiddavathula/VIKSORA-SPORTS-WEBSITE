@@ -1,0 +1,393 @@
+/* client/src/app.css */
+
+/* AGGRESSIVE LARGE SCREEN FIXES - HIGH PRIORITY */
+
+/* Force full width on all screen sizes */
+* {
+  box-sizing: border-box !important;
+}
+
+html, body {
+  width: 100vw !important;
+  max-width: none !important;
+  overflow-x: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#root {
+  width: 100vw !important;
+  max-width: none !important;
+  min-width: 100vw !important;
+  overflow-x: auto !important;
+}
+
+/* Material-UI Container Overrides - VERY AGGRESSIVE */
+.MuiContainer-root,
+.MuiContainer-maxWidthXs,
+.MuiContainer-maxWidthSm,
+.MuiContainer-maxWidthMd,
+.MuiContainer-maxWidthLg,
+.MuiContainer-maxWidthXl {
+  max-width: none !important;
+  width: 100% !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+/* AppBar and Toolbar fixes */
+.MuiAppBar-root {
+  width: 100vw !important;
+  max-width: none !important;
+}
+
+.MuiToolbar-root {
+  width: 100% !important;
+  max-width: none !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+/* Main content wrapper */
+.MuiBox-root {
+  max-width: none !important;
+}
+
+/* Large screen specific overrides */
+@media (min-width: 1200px) {
+  .MuiContainer-root,
+  .MuiContainer-maxWidthLg,
+  .MuiContainer-maxWidthXl {
+    max-width: none !important;
+    width: 95% !important;
+    margin: 0 auto !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  
+  body, html, #root {
+    width: 100vw !important;
+    max-width: none !important;
+    overflow-x: auto !important;
+  }
+}
+
+@media (min-width: 1536px) {
+  .MuiContainer-root,
+  .MuiContainer-maxWidthLg,
+  .MuiContainer-maxWidthXl {
+    max-width: none !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .MuiContainer-root,
+  .MuiContainer-maxWidthLg,
+  .MuiContainer-maxWidthXl {
+    max-width: none !important;
+    width: 85% !important;
+    margin: 0 auto !important;
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animated background for hero section */
+.animated-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(45deg, #1a237e, #ff6d00);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 109, 0, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(255, 109, 0, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 109, 0, 0);
+  }
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Success message animation */
+@keyframes successSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Success pulse animation */
+@keyframes successPulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3);
+  }
+  50% {
+    box-shadow: 0 6px 30px rgba(76, 175, 80, 0.5);
+  }
+}
+
+/* Fade in up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale in animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Button animations */
+.btn-animated {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-animated::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.btn-animated:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(100, 100);
+    opacity: 0;
+  }
+}
+
+/* Text animations */
+.text-gradient {
+  background: linear-gradient(45deg, #1a237e, #ff6d00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* Loading animation */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .animated-bg {
+    background-size: 200% 200%;
+  }
+}
+
+/* Large screen optimization */
+@media (min-width: 1200px) {
+  body {
+    width: 100%;
+    min-width: 100vw;
+  }
+  
+  #root {
+    width: 100%;
+    min-width: 100vw;
+  }
+  
+  .animated-bg {
+    width: 100%;
+    min-width: 100vw;
+  }
+}
+
+/* Extra large screens and maximized windows */
+@media (min-width: 1920px) {
+  body {
+    font-size: 16px;
+    width: 100%;
+    min-width: 100vw;
+    overflow-x: auto;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .MuiContainer-root {
+    max-width: none !important;
+  }
+}
+
+/* Ultra-wide screen support */
+@media (min-width: 2560px) {
+  body {
+    font-size: 18px;
+    width: 100%;
+    min-width: 100vw;
+  }
+  
+  .MuiContainer-root {
+    max-width: none !important;
+    width: 100% !important;
+  }
+}
+
+/* Global container fixes for large screens */
+@media (min-width: 1200px) {
+  .MuiContainer-maxWidthLg,
+  .MuiContainer-maxWidthXl,
+  .MuiContainer-root {
+    max-width: none !important;
+    width: 95% !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (min-width: 1536px) {
+  .MuiContainer-maxWidthLg,
+  .MuiContainer-maxWidthXl,
+  .MuiContainer-root {
+    max-width: none !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .MuiContainer-maxWidthLg,
+  .MuiContainer-maxWidthXl,
+  .MuiContainer-root {
+    max-width: none !important;
+    width: 85% !important;
+    margin: 0 auto !important;
+  }
+}

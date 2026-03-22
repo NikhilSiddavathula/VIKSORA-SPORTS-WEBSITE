@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comprehensive Logo Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .logo-img {
+            height: 50px;
+            border: 1px solid #ddd;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Comprehensive Logo Test</h1>
+    
+    <div class="test-container">
+        <h2>Test 1: Direct Path</h2>
+        <img id="test1" class="logo-img" src="/images/logo.png" alt="Test 1 Logo" />
+        <div id="result1" class="result"></div>
+    </div>
+    
+    <div class="test-container">
+        <h2>Test 2: With Cache Busting</h2>
+        <img id="test2" class="logo-img" src="/images/logo.png?t=123456" alt="Test 2 Logo" />
+        <div id="result2" class="result"></div>
+    </div>
+    
+    <div class="test-container">
+        <h2>Test 3: Absolute Path</h2>
+        <img id="test3" class="logo-img" src="http://localhost:5173/images/logo.png" alt="Test 3 Logo" />
+        <div id="result3" class="result"></div>
+    </div>
+    
+    <script>
+        function checkImage(imgId, resultId, testName) {
+            const img = document.getElementById(imgId);
+            const result = document.getElementById(resultId);
+            
+            img.onload = function() {
+                result.innerHTML = `${testName} - SUCCESS: Logo loaded successfully. Dimensions: ${img.naturalWidth}x${img.naturalHeight}`;
+                result.className = 'result success';
+            };
+            
+            img.onerror = function() {
+                result.innerHTML = `${testName} - ERROR: Logo failed to load.`;
+                result.className = 'result error';
+            };
+        }
+        
+        // Run tests
+        checkImage('test1', 'result1', 'Test 1');
+        checkImage('test2', 'result2', 'Test 2');
+        checkImage('test3', 'result3', 'Test 3');
+        
+        // Also test fetch API
+        fetch('/images/logo.png')
+            .then(response => {
+                const result = document.createElement('div');
+                result.className = 'test-container';
+                if (response.ok) {
+                    result.innerHTML = '<h2>Test 4: Fetch API</h2><p>Fetch API - SUCCESS: Logo file is accessible via fetch.</p>';
+                    result.innerHTML += '<div class="result success">Status: ' + response.status + ' ' + response.statusText + '</div>';
+                } else {
+                    result.innerHTML = '<h2>Test 4: Fetch API</h2><p>Fetch API - ERROR: Logo file is not accessible via fetch.</p>';
+                    result.innerHTML += '<div class="result error">Status: ' + response.status + ' ' + response.statusText + '</div>';
+                }
+                document.body.appendChild(result);
+            })
+            .catch(error => {
+                const result = document.createElement('div');
+                result.className = 'test-container';
+                result.innerHTML = '<h2>Test 4: Fetch API</h2><p>Fetch API - ERROR: ' + error.message + '</p>';
+                result.innerHTML += '<div class="result error">Error details: ' + error + '</div>';
+                document.body.appendChild(result);
+            });
+    </script>
+</body>
+</html>

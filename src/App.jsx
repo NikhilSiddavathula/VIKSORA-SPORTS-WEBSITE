@@ -130,7 +130,7 @@ function App() {
                     <Route path="/debug/admin" element={<AdminDebug />} />
                     
                     {/* Logo Test Route */}
-                    <Route path="/debug/logo" element={<LogoTest />} /> // Add this route
+                    <Route path="/debug/logo" element={<LogoTest />} />
                     
                     {/* Protected Routes - Only for logged-in users */}
                     <Route path="/dashboard" element={

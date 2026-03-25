@@ -2,18 +2,49 @@
   "version": 2,
   "builds": [
     {
-      "src": "server/server.js",
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "server/api/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/",
-      "dest": "/server/server.js"
+      "src": "/api/(.*)",
+      "dest": "server/api/index.js"
     },
     {
-      "src": "/api/(.*)",
-      "dest": "/server/server.js"
+      "src": "/images/(.*)",
+      "dest": "client/dist/images/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/videos/(.*)",
+      "dest": "client/dist/videos/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "client/dist/assets/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "client/dist/index.html"
     }
   ],
   "env": {
